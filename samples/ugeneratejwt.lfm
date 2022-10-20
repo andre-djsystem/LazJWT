@@ -1,0 +1,79 @@
+object frLazJWT: TfrLazJWT
+  Left = 800
+  Height = 462
+  Top = 309
+  Width = 320
+  Caption = 'LazJWT'
+  ClientHeight = 462
+  ClientWidth = 320
+  LCLVersion = '2.0.12.0'
+  object btGenerateToken: TButton
+    Left = 8
+    Height = 25
+    Top = 56
+    Width = 120
+    Caption = 'Genarete Token'
+    OnClick = btGenerateTokenClick
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 15
+    Top = 8
+    Width = 54
+    Caption = 'Secret Key'
+    ParentColor = False
+  end
+  object edSecretKey: TEdit
+    Left = 8
+    Height = 23
+    Top = 24
+    Width = 304
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 1
+    Text = 'your-256-bit-secret'
+  end
+  object edToken: TEdit
+    Left = 8
+    Height = 23
+    Top = 96
+    Width = 304
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 2
+  end
+  object btValidateSignature: TButton
+    Left = 8
+    Height = 25
+    Top = 136
+    Width = 120
+    Caption = 'Validate Signature'
+    OnClick = btValidateSignatureClick
+    TabOrder = 3
+  end
+  object mDecoded: TMemo
+    Left = 8
+    Height = 266
+    Top = 168
+    Width = 304
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 4
+  end
+  object btCustomPayLoad: TButton
+    Left = 192
+    Height = 25
+    Top = 56
+    Width = 120
+    Caption = 'Custom PayLoad'
+    OnClick = btCustomPayLoadClick
+    TabOrder = 5
+  end
+  object btValidateToken: TButton
+    Left = 192
+    Height = 25
+    Top = 136
+    Width = 120
+    Caption = 'Validate Token'
+    OnClick = btValidateTokenClick
+    TabOrder = 6
+  end
+end
