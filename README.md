@@ -172,4 +172,4 @@ end;
 Inspired in [Delphi JOSE and JWT Library](https://github.com/paolo-rossi/delphi-jose-jwt#delphi-jose-and-jwt-library)
 
 ## ⚠️ License
-`LazJWT` is free and open-source middleware licensed under the [MIT License](https://github.com/andre-djsystem/LazJWT/blob/main/LICENSE).
+`LazJWT` is free and open-source library licensed under the [MIT License](https://github.com/andre-djsystem/LazJWT/blob/main/LICENSE).
