@@ -107,7 +107,7 @@ end;
 
 #### Validating a token
 
-- With Custom PayLoad, only signature is validate
+**Note**: With Custom PayLoad, only signature is validate
 
 ```delphi
 uses
