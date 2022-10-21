@@ -38,7 +38,7 @@ boss install https://github.com/andre-djsystem/LazJWT
 ```
 
 ### Manual installation
-If you choose to install manually, simply add the following folders to your project, in *Project > Options > Resource Compiler > Directories and Conditionals > Include file search path*
+If you choose to install manually, simply add the following folders to your project, in *Project > Project Options > Paths > Other unit files (-Fu) > Include file search path*
 ```
 ../LazJWT/src
 ../HashLib/src/Base
