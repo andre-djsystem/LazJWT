@@ -50,11 +50,16 @@ begin
                     .SecretJWT(edSecretKey.Text)
                     .Iss('1234567890')
                     .Sub('1234567890')
-                    .Aud('andre')
+                    .Aud('djsystem')
                     {.Exp(1516239022)
                     .Nbf(1516239022)
                     .Iat(1516239022)
                     .JTI('123456') }
+                    .CustomFields(TJSONObject(GetJSON('{"teste": 12345}')))
+                    .AddField('Teste', 'String')
+                    .AddField('Boolean', True)
+                    .AddField('Inteiro', 1)
+                    .AddField('Jsonnn',GetJSON('{"Fld1" : "Hello", "Fld2" : 42, "Colors" : ["Red", "Green", "Blue"]}'))
                     .Token;
 end;
 

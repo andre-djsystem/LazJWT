@@ -52,6 +52,8 @@ type
     class function New: ILazJWTConfig;
   end;
 
+  { ILazJWT }
+
   ILazJWT = interface
   ['{02D099BA-321F-4193-9F70-40F9614777C4}']
     function SecretJWT: String; overload;
@@ -78,6 +80,17 @@ type
     function CustomPayLoad(const AValue: TJSONData): ILazJWT; overload;
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
+    function CustomFields: TJSONObject; overload;
+    function CustomFields(const AValue: TJSONObject): ILazJWT; overload;
+    function AddField(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function AddField(const AName: String; AValue: Boolean): ILazJWT; overload;
+    function AddField(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
+    function AddField(const AName, AValue: String): ILazJWT; overload;
+    function AddField(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: Int64): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: QWord): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: Integer): ILazJWT; overload;
+    function AddField(const AName: String; AValue : TJSONArray): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -114,6 +127,7 @@ type
     FCustomPayLoad: TJSONData;
     FUseCustomPayLoad: Boolean;
     FLazJWTConfig: ILazJWTConfig;
+    FCustomFields: TJSONObject;
 
     function SecretJWT: String; overload;
     function SecretJWT(const AValue: String): ILazJWT; overload;
@@ -139,6 +153,17 @@ type
     function CustomPayLoad(const AValue: TJSONData): ILazJWT; overload;
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
+    function CustomFields: TJSONObject; overload;
+    function CustomFields(const AValue: TJSONObject): ILazJWT; overload;
+    function AddField(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function AddField(const AName: String; AValue: Boolean): ILazJWT; overload;
+    function AddField(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
+    function AddField(const AName, AValue: String): ILazJWT; overload;
+    function AddField(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: Int64): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: QWord): ILazJWT; overload;
+    function AddField(const AName: String; Avalue: Integer): ILazJWT; overload;
+    function AddField(const AName: String; AValue : TJSONArray): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -260,8 +285,9 @@ end;
 
 function TLazJWT.CalcSignature(const AToken: String): String;
 var
-  LHMAC: IHMAC;
-  LSignCalc, LToken: String;
+  LHMAC: IHMAC = nil;
+  LSignCalc: String = '';
+  LToken: String = '';
 begin
   case AnsiIndexText(UpperCase(FAlg), ['HS256', 'HS384', 'HS512']) of
     0: LHMAC := THashFactory.THMAC.CreateHMAC(THashFactory.TCrypto.CreateSHA2_256);
@@ -291,8 +317,8 @@ end;
 
 procedure TLazJWT.SetHeader(const AToken: String);
 var
-  LHeader: TJSONObject;
-  LHeaderStr: String;
+  LHeader: TJSONObject = nil;
+  LHeaderStr: String = '';
 begin
   if (AToken = EmptyStr) then
     Exit;
@@ -315,7 +341,8 @@ end;
 
 function TLazJWT.GetPayLoad: String;
 var
-  LPayLoad: TJSONObject;
+  LPayLoad: TJSONObject = nil;
+  I: Integer;
 begin
  if Assigned(FCustomPayLoad) then
    Result := FCustomPayLoad.AsJSON
@@ -338,6 +365,11 @@ begin
      if (FJTI <> EmptyStr) then
        LPayLoad.Add('jti', FJTI);
 
+     for I:=0 to Pred(FCustomFields.Count) do
+     begin
+       LPayLoad.Add(FCustomFields.Names[I],FCustomFields.Items[I].Clone);
+     end;
+
      Result := LPayLoad.AsJSON;
    finally
      LPayLoad.Free;
@@ -352,8 +384,8 @@ end;
 
 procedure TLazJWT.SetPayLoad(const AToken: String);
 var
-  LPayLoad: TJSONObject;
-  LPayLoadStr: String;
+  LPayLoad: TJSONObject = nil;
+  LPayLoadStr: String = '';
   PosIni, PosEnd: Integer;
 begin
  if (AToken = EmptyStr) then
@@ -373,19 +405,43 @@ begin
       LPayLoad := TJSONObject(GetJSON(LPayLoadStr));
       try
         if Assigned(LPayLoad.FindPath('iss')) then
+        begin
           FIss := LPayLoad.FindPath('iss').AsString;
+          LPayLoad.Delete('iss');
+        end;
         if Assigned(LPayLoad.FindPath('sub')) then
+        begin
           FSub := LPayLoad.FindPath('sub').AsString;
+          LPayLoad.Delete('sub');
+        end;
         if Assigned(LPayLoad.FindPath('aud')) then
+        begin
           FAud := LPayLoad.FindPath('aud').AsString;
+          LPayLoad.Delete('aud');
+        end;
         if Assigned(LPayLoad.FindPath('exp')) then
+        begin
           FExp := LPayLoad.FindPath('exp').AsInt64;
+          LPayLoad.Delete('exp');
+        end;
         if Assigned(LPayLoad.FindPath('nbf')) then
+        begin
           FNbf := LPayLoad.FindPath('nbf').AsInt64;
+          LPayLoad.Delete('nbf');
+        end;
         if Assigned(LPayLoad.FindPath('iat')) then
+        begin
           FIat := LPayLoad.FindPath('iat').AsInt64;
+          LPayLoad.Delete('iat');
+        end;
         if Assigned(LPayLoad.FindPath('jti')) then
+        begin
           FJTI := LPayLoad.FindPath('jti').AsString;
+          LPayLoad.Delete('jti');
+        end;
+
+        if (LPayLoad.Count > 0) then
+          CustomFields(LPayLoad);
       finally
         LPayLoad.Free;
       end;
@@ -547,6 +603,77 @@ begin
   Result := Self;
 end;
 
+function TLazJWT.CustomFields: TJSONObject;
+begin
+ Result := FCustomFields;
+end;
+
+function TLazJWT.CustomFields(const AValue: TJSONObject): ILazJWT;
+var
+  I: Integer;
+begin
+ Result := Self;
+ for I:=0 to Pred(AValue.Count) do
+ begin
+   FCustomFields.Add(AValue.Names[I],AValue.Items[I].Clone);
+ end;
+end;
+
+function TLazJWT.AddField(const AName: String; AValue: TJSONData): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; AValue: Boolean): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; AValue: TJSONFloat): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName, AValue: String): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; AValue: TJSONUnicodeStringType
+  ): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; Avalue: Int64): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; Avalue: QWord): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; Avalue: Integer): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue);
+end;
+
+function TLazJWT.AddField(const AName: String; AValue: TJSONArray): ILazJWT;
+begin
+ Result := Self;
+ FCustomFields.Add(AName,AValue.Clone);
+end;
+
 function TLazJWT.Header: String;
 begin
   Result := GetHeader;
@@ -611,6 +738,7 @@ end;
 constructor TLazJWT.Create(AConfig: ILazJWTConfig);
 begin
   FJWT := TJWT.Create;
+  FCustomFields := TJSONObject.Create;
   FAlg := 'HS256';
   FType := 'JWT';
   FIss := EmptyStr;
@@ -630,9 +758,10 @@ end;
 destructor TLazJWT.Destroy;
 begin
   if Assigned(FCustomPayLoad) then
-    FCustomPayLoad.Free;
+    FreeAndNil(FCustomPayLoad);
 
-  FJWT.Free;
+  FreeAndNil(FCustomFields);
+  FreeAndNil(FJWT);
   inherited Destroy;
 end;
 
