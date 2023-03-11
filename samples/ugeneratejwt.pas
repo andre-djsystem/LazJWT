@@ -55,11 +55,11 @@ begin
                     .Nbf(1516239022)
                     .Iat(1516239022)
                     .JTI('123456') }
-                    .CustomFields(TJSONObject(GetJSON('{"teste": 12345}')))
-                    .AddField('Teste', 'String')
-                    .AddField('Boolean', True)
-                    .AddField('Inteiro', 1)
-                    .AddField('Jsonnn',GetJSON('{"Fld1" : "Hello", "Fld2" : 42, "Colors" : ["Red", "Green", "Blue"]}'))
+                    .CustomClaims(TJSONObject(GetJSON('{"teste": 12345}')))
+                    .AddClaim('Teste', 'String')
+                    .AddClaim('Boolean', True)
+                    .AddClaim('Inteiro', 1)
+                    .AddClaim('Jsonnn',GetJSON('{"Fld1" : "Hello", "Fld2" : 42, "Colors" : ["Red", "Green", "Blue"]}'))
                     .Token;
 end;
 

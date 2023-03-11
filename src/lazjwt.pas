@@ -80,17 +80,17 @@ type
     function CustomPayLoad(const AValue: TJSONData): ILazJWT; overload;
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
-    function CustomFields: TJSONObject; overload;
-    function CustomFields(const AValue: TJSONObject): ILazJWT; overload;
-    function AddField(const AName: String; AValue: TJSONData): ILazJWT; overload;
-    function AddField(const AName: String; AValue: Boolean): ILazJWT; overload;
-    function AddField(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
-    function AddField(const AName, AValue: String): ILazJWT; overload;
-    function AddField(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: Int64): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: QWord): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: Integer): ILazJWT; overload;
-    function AddField(const AName: String; AValue : TJSONArray): ILazJWT; overload;
+    function CustomClaims: TJSONObject; overload;
+    function CustomClaims(const AValue: TJSONObject): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: Boolean): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
+    function AddClaim(const AName, AValue: String): ILazJWT; overload;
+    function AddClaim(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: Int64): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: QWord): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: Integer): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue : TJSONArray): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -127,7 +127,7 @@ type
     FCustomPayLoad: TJSONData;
     FUseCustomPayLoad: Boolean;
     FLazJWTConfig: ILazJWTConfig;
-    FCustomFields: TJSONObject;
+    FCustomClaims: TJSONObject;
 
     function SecretJWT: String; overload;
     function SecretJWT(const AValue: String): ILazJWT; overload;
@@ -153,17 +153,17 @@ type
     function CustomPayLoad(const AValue: TJSONData): ILazJWT; overload;
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
-    function CustomFields: TJSONObject; overload;
-    function CustomFields(const AValue: TJSONObject): ILazJWT; overload;
-    function AddField(const AName: String; AValue: TJSONData): ILazJWT; overload;
-    function AddField(const AName: String; AValue: Boolean): ILazJWT; overload;
-    function AddField(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
-    function AddField(const AName, AValue: String): ILazJWT; overload;
-    function AddField(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: Int64): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: QWord): ILazJWT; overload;
-    function AddField(const AName: String; Avalue: Integer): ILazJWT; overload;
-    function AddField(const AName: String; AValue : TJSONArray): ILazJWT; overload;
+    function CustomClaims: TJSONObject; overload;
+    function CustomClaims(const AValue: TJSONObject): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: Boolean): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
+    function AddClaim(const AName, AValue: String): ILazJWT; overload;
+    function AddClaim(const AName : String; AValue: TJSONUnicodeStringType): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: Int64): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: QWord): ILazJWT; overload;
+    function AddClaim(const AName: String; Avalue: Integer): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue : TJSONArray): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -365,9 +365,9 @@ begin
      if (FJTI <> EmptyStr) then
        LPayLoad.Add('jti', FJTI);
 
-     for I:=0 to Pred(FCustomFields.Count) do
+     for I:=0 to Pred(FCustomClaims.Count) do
      begin
-       LPayLoad.Add(FCustomFields.Names[I],FCustomFields.Items[I].Clone);
+       LPayLoad.Add(FCustomClaims.Names[I],FCustomClaims.Items[I].Clone);
      end;
 
      Result := LPayLoad.AsJSON;
@@ -441,7 +441,7 @@ begin
         end;
 
         if (LPayLoad.Count > 0) then
-          CustomFields(LPayLoad);
+          CustomClaims(LPayLoad);
       finally
         LPayLoad.Free;
       end;
@@ -603,75 +603,75 @@ begin
   Result := Self;
 end;
 
-function TLazJWT.CustomFields: TJSONObject;
+function TLazJWT.CustomClaims: TJSONObject;
 begin
- Result := FCustomFields;
+ Result := FCustomClaims;
 end;
 
-function TLazJWT.CustomFields(const AValue: TJSONObject): ILazJWT;
+function TLazJWT.CustomClaims(const AValue: TJSONObject): ILazJWT;
 var
   I: Integer;
 begin
  Result := Self;
  for I:=0 to Pred(AValue.Count) do
  begin
-   FCustomFields.Add(AValue.Names[I],AValue.Items[I].Clone);
+   FCustomClaims.Add(AValue.Names[I],AValue.Items[I].Clone);
  end;
 end;
 
-function TLazJWT.AddField(const AName: String; AValue: TJSONData): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONData): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; AValue: Boolean): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: Boolean): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; AValue: TJSONFloat): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONFloat): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName, AValue: String): ILazJWT;
+function TLazJWT.AddClaim(const AName, AValue: String): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; AValue: TJSONUnicodeStringType
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONUnicodeStringType
   ): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; Avalue: Int64): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; Avalue: Int64): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; Avalue: QWord): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; Avalue: QWord): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; Avalue: Integer): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; Avalue: Integer): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddField(const AName: String; AValue: TJSONArray): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONArray): ILazJWT;
 begin
  Result := Self;
- FCustomFields.Add(AName,AValue.Clone);
+ FCustomClaims.Add(AName,AValue.Clone);
 end;
 
 function TLazJWT.Header: String;
@@ -738,7 +738,7 @@ end;
 constructor TLazJWT.Create(AConfig: ILazJWTConfig);
 begin
   FJWT := TJWT.Create;
-  FCustomFields := TJSONObject.Create;
+  FCustomClaims := TJSONObject.Create;
   FAlg := 'HS256';
   FType := 'JWT';
   FIss := EmptyStr;
@@ -760,7 +760,7 @@ begin
   if Assigned(FCustomPayLoad) then
     FreeAndNil(FCustomPayLoad);
 
-  FreeAndNil(FCustomFields);
+  FreeAndNil(FCustomClaims);
   FreeAndNil(FJWT);
   inherited Destroy;
 end;
