@@ -84,6 +84,34 @@ end;
 
 ```
 
+- With Custom Claims
+
+```delphi
+uses
+  LazJWT;
+  
+var
+  LResult: String;
+begin
+  LResult := TLazJWT
+               .New
+               .SecretJWT('your-256-bit-secret')
+               .Iss('1234567890')
+               .Sub('1234567890')
+               .Aud('123456')
+               .Exp(1516239022)
+               .Nbf(1516239022)
+               .Iat(1516239022)
+               .JTI('123456')
+			   .AddClaim('Validated', True)
+			   .AddClaim('Name', 'Andre')  
+			   .AddClaim('Level', 10)  
+			   .AddClaim('Limit', 100.00) 
+               .Token; 
+end;   
+
+```
+
 
 - Custom PayLoad
 
