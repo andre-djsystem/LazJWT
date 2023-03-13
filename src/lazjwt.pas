@@ -81,8 +81,8 @@ type
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
     function CustomClaims: TJSONObject; overload;
-    function CustomClaims(const AValue: TJSONObject): ILazJWT; overload;
-    function AddClaim(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function CustomClaims(const AValue: TJSONObject; const AFreeObject: Boolean = True): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONData; const AFreeObject: Boolean = True): ILazJWT; overload;
     function AddClaim(const AName: String; AValue: Boolean): ILazJWT; overload;
     function AddClaim(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
     function AddClaim(const AName, AValue: String): ILazJWT; overload;
@@ -90,7 +90,7 @@ type
     function AddClaim(const AName: String; Avalue: Int64): ILazJWT; overload;
     function AddClaim(const AName: String; Avalue: QWord): ILazJWT; overload;
     function AddClaim(const AName: String; Avalue: Integer): ILazJWT; overload;
-    function AddClaim(const AName: String; AValue : TJSONArray): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue : TJSONArray; const AFreeObject: Boolean = True): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -154,8 +154,8 @@ type
     function UseCustomPayLoad: Boolean; overload;
     function UseCustomPayLoad(const AValue: Boolean): ILazJWT; overload;
     function CustomClaims: TJSONObject; overload;
-    function CustomClaims(const AValue: TJSONObject): ILazJWT; overload;
-    function AddClaim(const AName: String; AValue: TJSONData): ILazJWT; overload;
+    function CustomClaims(const AValue: TJSONObject; const AFreeObject: Boolean = True): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue: TJSONData; const AFreeObject: Boolean = True): ILazJWT; overload;
     function AddClaim(const AName: String; AValue: Boolean): ILazJWT; overload;
     function AddClaim(const AName: String; AValue: TJSONFloat): ILazJWT; overload;
     function AddClaim(const AName, AValue: String): ILazJWT; overload;
@@ -163,7 +163,7 @@ type
     function AddClaim(const AName: String; Avalue: Int64): ILazJWT; overload;
     function AddClaim(const AName: String; Avalue: QWord): ILazJWT; overload;
     function AddClaim(const AName: String; Avalue: Integer): ILazJWT; overload;
-    function AddClaim(const AName: String; AValue : TJSONArray): ILazJWT; overload;
+    function AddClaim(const AName: String; AValue : TJSONArray; const AFreeObject: Boolean = True): ILazJWT; overload;
     function Header: String;
     function PayLoad: String;
     function AsString: String;
@@ -441,7 +441,7 @@ begin
         end;
 
         if (LPayLoad.Count > 0) then
-          CustomClaims(LPayLoad);
+          CustomClaims(LPayLoad, False);
       finally
         LPayLoad.Free;
       end;
@@ -608,7 +608,7 @@ begin
  Result := FCustomClaims;
 end;
 
-function TLazJWT.CustomClaims(const AValue: TJSONObject): ILazJWT;
+function TLazJWT.CustomClaims(const AValue: TJSONObject; const AFreeObject: Boolean): ILazJWT;
 var
   I: Integer;
 begin
@@ -617,12 +617,16 @@ begin
  begin
    FCustomClaims.Add(AValue.Names[I],AValue.Items[I].Clone);
  end;
+ if AFreeObject then
+   AValue.Free;
 end;
 
-function TLazJWT.AddClaim(const AName: String; AValue: TJSONData): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONData; const AFreeObject: Boolean): ILazJWT;
 begin
  Result := Self;
- FCustomClaims.Add(AName,AValue);
+ FCustomClaims.Add(AName,AValue.Clone);
+ if AFreeObject then
+   AValue.Free;
 end;
 
 function TLazJWT.AddClaim(const AName: String; AValue: Boolean): ILazJWT;
@@ -668,10 +672,12 @@ begin
  FCustomClaims.Add(AName,AValue);
 end;
 
-function TLazJWT.AddClaim(const AName: String; AValue: TJSONArray): ILazJWT;
+function TLazJWT.AddClaim(const AName: String; AValue: TJSONArray; const AFreeObject: Boolean): ILazJWT;
 begin
  Result := Self;
  FCustomClaims.Add(AName,AValue.Clone);
+ if AFreeObject then
+   AValue.Free;
 end;
 
 function TLazJWT.Header: String;

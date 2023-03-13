@@ -43,7 +43,10 @@ uses
 { TfrLazJWT }
 
 procedure TfrLazJWT.btGenerateTokenClick(Sender: TObject);
+var
+  LObject: TJSONObject;
 begin
+  LObject:=TJSONObject(GetJSON('{"teste": 12345}'));
   FUseCustomPayLoad := False;
   edToken.Text := TLazJWT
                     .New
@@ -55,12 +58,13 @@ begin
                     .Nbf(1516239022)
                     .Iat(1516239022)
                     .JTI('123456') }
-                    .CustomClaims(TJSONObject(GetJSON('{"teste": 12345}')))
+                    .CustomClaims(LObject)
                     .AddClaim('Teste', 'String')
                     .AddClaim('Boolean', True)
                     .AddClaim('Inteiro', 1)
                     .AddClaim('Jsonnn',GetJSON('{"Fld1" : "Hello", "Fld2" : 42, "Colors" : ["Red", "Green", "Blue"]}'))
                     .Token;
+  //LObject.Free;
 end;
 
 procedure TfrLazJWT.btCustomPayLoadClick(Sender: TObject);

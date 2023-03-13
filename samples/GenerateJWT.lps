@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="22" Y="10"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -20,10 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uGenerateJWT"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="40"/>
-        <CursorPos X="30" Y="62"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="73"/>
+        <CursorPos Y="91"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,10 +30,11 @@
         <Filename Value="..\src\lazjwt.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LazJWT"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="735"/>
-        <CursorPos X="27" Y="763"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="557"/>
+        <CursorPos Y="576"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -42,7 +42,7 @@
         <EditorIndex Value="11"/>
         <TopLine Value="216"/>
         <CursorPos Y="221"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -50,63 +50,63 @@
         <EditorIndex Value="12"/>
         <TopLine Value="76"/>
         <CursorPos X="17" Y="105"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="..\modules\hashlib4pascal\HashLib\src\Utils\HlpConverters.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="19"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit5>
       <Unit6>
         <Filename Value="..\modules\hashlib4pascal\HashLib\src\Base\HlpHMACNotBuildInAdapter.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="147"/>
         <CursorPos X="56" Y="85"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\modules\hashlib4pascal\HashLib\src\Base\HlpHash.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="123"/>
         <CursorPos Y="143"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit7>
       <Unit8>
         <Filename Value="..\modules\hashlib4pascal\HashLib\src\Base\HlpHashResult.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="88"/>
         <CursorPos Y="108"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit8>
       <Unit9>
         <Filename Value="E:\fpcdeluxe32\Laz2012\fpcsrc\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="189"/>
         <CursorPos X="23" Y="206"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit9>
       <Unit10>
         <Filename Value="E:\fpcdeluxe32\Laz2012\fpcsrc\packages\fcl-json\src\fpjson.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="738"/>
         <CursorPos X="10" Y="755"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit10>
       <Unit11>
         <Filename Value="E:\fpcdeluxe32\Laz2012\fpcsrc\packages\fcl-base\src\base64.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="72"/>
         <CursorPos X="10" Y="90"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="8"/>
       </Unit11>
       <Unit12>
         <Filename Value="..\..\horse\src\Horse.Request.pas"/>
         <EditorIndex Value="5"/>
         <TopLine Value="169"/>
         <CursorPos X="11" Y="187"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -114,14 +114,14 @@
         <EditorIndex Value="6"/>
         <TopLine Value="199"/>
         <CursorPos X="11" Y="216"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="..\..\horse\src\Horse.Core.Route.Contract.pas"/>
         <EditorIndex Value="7"/>
         <CursorPos X="45" Y="15"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
@@ -129,7 +129,7 @@
         <EditorIndex Value="8"/>
         <TopLine Value="117"/>
         <CursorPos X="39" Y="146"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -137,7 +137,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="4"/>
         <CursorPos X="3" Y="18"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
@@ -145,15 +145,15 @@
         <EditorIndex Value="10"/>
         <TopLine Value="162"/>
         <CursorPos X="60" Y="180"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
         <Filename Value="C:\fpcupdeluxe\Laz32\fpcsrc\packages\fcl-json\src\fpjson.pp"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="704"/>
-        <CursorPos Y="716"/>
-        <UsageCount Value="11"/>
+        <TopLine Value="745"/>
+        <CursorPos X="3" Y="763"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -162,129 +162,130 @@
         <EditorIndex Value="3"/>
         <TopLine Value="1105"/>
         <CursorPos X="2" Y="1107"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit19>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="717" TopLine="697"/>
+        <Caret Line="166" Column="98" TopLine="132"/>
       </Position1>
       <Position2>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="720" TopLine="697"/>
+        <Caret Line="680" Column="3" TopLine="651"/>
       </Position2>
       <Position3>
-        <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="721" TopLine="697"/>
+        <Filename Value="ugeneratejwt.pas"/>
+        <Caret Line="91" TopLine="73"/>
       </Position3>
       <Position4>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="700" TopLine="693"/>
+        <Caret Line="576" TopLine="558"/>
       </Position4>
       <Position5>
-        <Filename Value="ugeneratejwt.pas"/>
-        <Caret Line="121" TopLine="96"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="390" TopLine="372"/>
       </Position5>
       <Position6>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="700" TopLine="693"/>
+        <Caret Line="386" TopLine="372"/>
       </Position6>
       <Position7>
-        <Filename Value="C:\fpcupdeluxe\Laz32\fpcsrc\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="57" Column="10" TopLine="39"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="391" TopLine="372"/>
       </Position7>
       <Position8>
-        <Filename Value="C:\fpcupdeluxe\Laz32\fpcsrc\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="1107" Column="2" TopLine="1105"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="394" TopLine="372"/>
       </Position8>
       <Position9>
-        <Filename Value="C:\fpcupdeluxe\Laz32\fpcsrc\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="59" Column="10" TopLine="41"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="395" TopLine="372"/>
       </Position9>
       <Position10>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="700" TopLine="693"/>
+        <Caret Line="396" TopLine="372"/>
       </Position10>
       <Position11>
-        <Filename Value="C:\fpcupdeluxe\Laz32\fpcsrc\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="57" Column="10" TopLine="39"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="397" TopLine="372"/>
       </Position11>
       <Position12>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="720" TopLine="693"/>
+        <Caret Line="399" TopLine="372"/>
       </Position12>
       <Position13>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="701" TopLine="693"/>
+        <Caret Line="401" TopLine="384"/>
       </Position13>
       <Position14>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="399" TopLine="381"/>
+        <Caret Line="405" TopLine="394"/>
       </Position14>
       <Position15>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="701" TopLine="683"/>
+        <Caret Line="406" TopLine="394"/>
       </Position15>
       <Position16>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="720" TopLine="703"/>
+        <Caret Line="407" TopLine="394"/>
       </Position16>
       <Position17>
-        <Filename Value="ugeneratejwt.pas"/>
-        <Caret Line="106" Column="3" TopLine="96"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="409" TopLine="394"/>
       </Position17>
       <Position18>
-        <Filename Value="ugeneratejwt.pas"/>
-        <Caret Line="53" Column="35" TopLine="45"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="410" TopLine="394"/>
       </Position18>
       <Position19>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="720" TopLine="703"/>
+        <Caret Line="412" TopLine="394"/>
       </Position19>
       <Position20>
-        <Filename Value="ugeneratejwt.pas"/>
-        <Caret Line="59" Column="40" TopLine="45"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="414" TopLine="394"/>
       </Position20>
       <Position21>
-        <Filename Value="ugeneratejwt.pas"/>
-        <Caret Line="125" Column="62" TopLine="96"/>
+        <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="415" TopLine="394"/>
       </Position21>
       <Position22>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="720" TopLine="703"/>
+        <Caret Line="417" TopLine="394"/>
       </Position22>
       <Position23>
         <Filename Value="..\src\lazjwt.pas"/>
+        <Caret Line="419" TopLine="394"/>
       </Position23>
       <Position24>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="157" Column="26" TopLine="138"/>
+        <Caret Line="420" TopLine="403"/>
       </Position24>
       <Position25>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="622" Column="22" TopLine="592"/>
+        <Caret Line="422" TopLine="403"/>
       </Position25>
       <Position26>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="9" Column="69"/>
+        <Caret Line="427" TopLine="412"/>
       </Position26>
       <Position27>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="444" Column="23" TopLine="539"/>
+        <Caret Line="432" TopLine="418"/>
       </Position27>
       <Position28>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="618" Column="17" TopLine="588"/>
+        <Caret Line="437" TopLine="418"/>
       </Position28>
       <Position29>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="625" Column="15" TopLine="610"/>
+        <Caret Line="444" Column="39" TopLine="418"/>
       </Position29>
       <Position30>
         <Filename Value="..\src\lazjwt.pas"/>
-        <Caret Line="763" Column="27" TopLine="735"/>
+        <Caret Line="576" TopLine="557"/>
       </Position30>
     </JumpHistory>
     <RunParams>
