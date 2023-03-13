@@ -103,10 +103,10 @@ begin
                .Nbf(1516239022)
                .Iat(1516239022)
                .JTI('123456')
-			   .AddClaim('Validated', True)
-			   .AddClaim('Name', 'Andre')  
-			   .AddClaim('Level', 10)  
-			   .AddClaim('Limit', 100.00) 
+               .AddClaim('Validated', True)
+               .AddClaim('Name', 'Andre')  
+               .AddClaim('Level', 10)  
+               .AddClaim('Limit', 100.00) 
                .Token; 
 end;   
 
