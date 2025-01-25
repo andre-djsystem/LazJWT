@@ -6,7 +6,7 @@ interface
 
 uses
   Generics.Collections, Classes, SysUtils, StrUtils, DateUtils,
-  fpjwt, fpjson, jsonparser, Base64, HlpIHashInfo, HlpConverters, HlpHashFactory;
+  fpjwt, fpjson, Base64, HlpIHashInfo, HlpConverters, HlpHashFactory;
 
 type
   ILazJWTConfig = interface
@@ -714,7 +714,7 @@ begin
             'The JWT is no longer valid - the evaluation time [%s] is on or after the Expiration Time [exp=%s]',
             [DateToISO8601(Now, False), DateToISO8601(FExp, False)]));
 
-    if (FNbf <> 0) and (FNbf < DateTimeToUnix(Now)) then
+    if (FNbf <> 0) and (FNbf < DateTimeToUnix(Now, false)) then
       raise  Exception.Create(Format('The JWT is not yet valid as the evaluation time [%s] is before the NotBefore [nbf=%s]',
             [DateToISO8601(Now, False), DateToISO8601(FNbf)]));
 
