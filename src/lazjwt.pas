@@ -60,6 +60,8 @@ type
     function SecretJWT(const AValue: String): ILazJWT; overload;
     function Alg: String; overload;
     function Alg(const AValue: String): ILazJWT; overload;
+    function Typ: String; overload;
+    function Typ(const AValue: String): ILazJWT; overload;
     function Iss: String; overload;
     function Iss(const AValue: String): ILazJWT; overload;
     function Sub: String; overload;
@@ -133,6 +135,8 @@ type
     function SecretJWT(const AValue: String): ILazJWT; overload;
     function Alg: String; overload;
     function Alg(const AValue: String): ILazJWT; overload;
+    function Typ: String; overload;
+    function Typ(const AValue: String): ILazJWT; overload;
     function Iss: String; overload;
     function Iss(const AValue: String): ILazJWT; overload;
     function Sub: String; overload;
@@ -479,6 +483,17 @@ function TLazJWT.Alg(const AValue: String): ILazJWT;
 begin
   FAlg := AValue;
   Result := Self;
+end;
+
+function TLazJWT.Typ: String;
+begin
+ Result := FType;
+end;
+
+function TLazJWT.Typ(const AValue: String): ILazJWT;
+begin
+ FType := AValue;
+ Result := Self;
 end;
 
 function TLazJWT.Iss: String;
