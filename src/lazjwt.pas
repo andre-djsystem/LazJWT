@@ -724,12 +724,12 @@ begin
 
   if not FUseCustomPayLoad then
   begin
-    if (FExp <> 0) and (FExp < DateTimeToUnix(Now)) then
+    if (FExp <> 0) and (FExp < DateTimeToUnix(Now, False)) then
       raise  Exception.Create(Format(
             'The JWT is no longer valid - the evaluation time [%s] is on or after the Expiration Time [exp=%s]',
             [DateToISO8601(Now, False), DateToISO8601(FExp, False)]));
 
-    if (FNbf <> 0) and (FNbf < DateTimeToUnix(Now)) then
+    if (FNbf <> 0) and (FNbf < DateTimeToUnix(Now, false)) then
       raise  Exception.Create(Format('The JWT is not yet valid as the evaluation time [%s] is before the NotBefore [nbf=%s]',
             [DateToISO8601(Now, False), DateToISO8601(FNbf)]));
 
@@ -792,4 +792,3 @@ begin
 end;
 
 end.
-
